@@ -1,0 +1,9 @@
+<%= form_for @outfit do |f| %>
+ <%= f.text_field :type_of_outfit, placeholder: "Piece of Clothing"%>
+ <%= f.text_field :occasion, placeholder: "Type of Occasion"%>
+ <%= f.text_field :brand_name, placeholder: 'Brand Name'%>
+ <%= f.text_field :price, placeholder: 'Price'%>
+ <%= f.text_field :accessories, placeholder: 'Type of Accessories'%>
+ <%= f.text_area :sender_comment, placeholder: 'Comment'%>
+ <%= f.submit 'Done'%>
+<%end%>

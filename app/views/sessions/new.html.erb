@@ -1,0 +1,50 @@
+<div class="container">
+  <main>
+    <section id="slide-1" class="homeSlide">
+      <div class="bcg">
+        <div class="hsContainer">
+          <div class="hsContent1">
+            <div id="logo">
+              <h1>UpDown</h1>
+            </div>
+            <div class="login">
+							<div id="liform">
+								<h2>Log In</h2>
+								<%= form_for :session, :url => sessions_path do |f| %>
+									<%= f.text_field :email, placeholder: "Email"%>
+									<%= f.text_field :password, placeholder: "Password"%>
+									<%= f.submit 'Done'%>
+								<%end%>
+								<br>
+								<%= link_to 'Not a user? Create an account', new_user_path, {:style=> "font-family: 'Nothing You Could Do', cursive"} %>
+							</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="slide-2" class="homeSlide">
+      <div class="bcg">
+        <div class="hsContainer">
+          <div class="hsContent2">
+            <div id="aboutinfo">
+	            <h2>About UpDown</h2>
+	             <p> UpDown is an app that allows you to post images of outfits you are thinking of wear for a night out on the town, brunch with your friends, or special occassions. Want to brag about what brand it is, tell the how much of a bargain you got on your outfit, or what accessories you are thinking of wearing with it? We got you covered! <br><br>Your friends are then able then able to up-vote or down-vote your outfit to let you know what they think of it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="slide-3" class="homeSlide">
+      <div class="bcg">
+        <div class="hsContainer">
+          <div class="hsContent3">
+            <img ng-src="/assets/">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+      <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+</div>

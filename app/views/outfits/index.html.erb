@@ -1,0 +1,124 @@
+<!-- <h1>My Outfits</h1> -->
+<!--
+<%# @outfits.each do |o|%>
+<strong>Type of Outfit:</strong><br>
+<%#= o.type_of_outfit %><br>
+<strong>Occasion:</strong><br>
+<%#= o.occasion %><br>
+<strong>Brand Name:</strong><br>
+<%#= o.brand_name %><br>
+<strong>Price:</strong><br>
+<%#= o.price %><br>
+<strong>Accessories:</strong><br>
+<%#= o.accessories %><br>
+<strong>Comments:</strong><br>
+<%#= o.sender_comment %><br><br>
+<%#end%>
+<br>
+ -->
+
+<%= form_for(Outfit.new , html: { multipart: true }) do |f|%>
+  <%= f.file_field :photo%>
+  <%= f.submit%>
+<%end%>
+
+<div ng-app="outfit-app" ng-controller="OutfitCtrl" class="container" >
+    <h1 class="page_titles">Outfits</h1>
+    <div class="form-group">
+      <input ng-model="searchOutfit" name="searchbox" type="text" class="form-control search" id="searchbar" placeholder="Search">
+    </div><br>
+    <div class="scroll">
+      <div id="resultsfield" ng-repeat="outfit in outfits | filter:searchOutfit ">
+        <div id="outfitimage">
+          <a href='{{outfit.photo}}'><img src='{{outfit.photo}}' /></a>
+        </div>
+
+        <div id="outfitcontainer">
+
+          <div id="content" ng-hide="oufit.details">
+            <div id="typeofclothing">
+              <div class="outfitslabel">
+                <p class="size"><strong>Type of Clothing</strong></p>
+              </div>
+              <div class="content">
+                <p>{{outfit.type_of_outfit}}</p>
+              </div>
+            </div>
+            <div id="occasion">
+              <div class="outfitslabel">
+                <p class="size"><strong>Occasion</strong></p>
+              </div>
+              <div class="content"><p>{{outfit.occasion}}</p></div>
+            </div>
+            <div id="brand">
+              <div class="outfitslabel">
+                <p class="size"><strong>Brand</strong></p>
+              </div>
+              <div class="content">
+                <p>{{outfit.brand}}</p>
+              </div>
+            </div>
+            <div id="price">
+              <div class="outfitslabel">
+                <p class="size"><strong>Price</strong></p>
+              </div>
+              <div class="content">
+                <p>{{outfit.price}}</p>
+              </div>
+            </div>
+            <div id="accessories">
+              <div class="outfitslabel"><p class="size"><strong>Accessories</strong></p></div>
+              <div class="content"><p>{{outfit.accessories}}</p></div>
+            </div>
+            <div id="sendercomment">
+              <div class="outfitslabel"><p class="size"><strong>Comments</strong></p></div>
+              <div class="content"><p>{{outfit.sender_comment}}</p></div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div id="useroptions">
+            <span ng-hide="outfit.editing">
+              <a ng-click="editOutfit(outfit);" class="btn btn-info"> EDIT </a>
+            </span>
+            <span ng-show="outfit.editing">
+              <a ng-click="backOutfit(outfit);" class="btn btn-info"> BACK </a>
+            </span>
+            <span>
+              <a ng-click="deleteOutfit(outfit);" class="btn btn-info"> DELETE </a>
+            </span>
+          </div>
+        </div>
+
+
+        <div ng-show="outfit.editing" id="edit">
+          <form class="form-group" id="outfits">
+            <div>
+              <input ng-model="outfit.type_of_outfit" type="text" name="type_of_outfit" class="form-control" placeholder="Type of Outfit">
+            </div>
+            <div>
+              <input ng-model="outfit.occasion" type="text" name="occasion" class="form-control" placeholder="Occasion">
+            </div>
+            <div>
+              <input ng-model="outfit.brand_name" type="text" name="brand_name" class="form-control" placeholder="Brand Name">
+            </div>
+            <div>
+              <input ng-model="outfit.price" type="text" name="price" class="form-control" placeholder="Price">
+            </div>
+            <div>
+
+              <input ng-model="outfit.accessories" type="text" name="accessories" class="form-control" placeholder="Accessories">
+            </div>
+            <div>
+              <input ng-model="outfit.sender_comment" type="text" name="sender_comment" class="form-control" placeholder="Comment">
+            </div>
+
+            <div>
+            <button type="submit" ng-click="updateOutfit(outfit)" class="btn btn-primary large">Update</button>
+          <!--   <button type="submit" ng-click="backOutfit(outfit)" class="btn btn-primary small">Back</button> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
